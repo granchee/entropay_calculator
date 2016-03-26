@@ -26,11 +26,9 @@ if __name__ == '__main__':
         sys.exit()
     else:
         amount_to_be_received = float(sys.argv[1])
-        percentage_fee = 3.95
-        amount_to_be_sent = amount_to_be_received * 100.0 / (100.0 - percentage_fee)
-        print "Amount to be sent=%.2f (more exactly=%.3f)" % (amount_to_be_sent, amount_to_be_sent)
-        print "-----------------"
         Config = ConfigParser.ConfigParser()
         Config.read("entropay_calculator.ini")
-        configured_percentage_fee = Config.getfloat("Config", "percentage_fee")
-        print "Configured fee=%.2f%%" % (configured_percentage_fee)
+        percentage_fee = Config.getfloat("Config", "percentage_fee")
+        amount_to_be_sent = amount_to_be_received * 100.0 / (100.0 - percentage_fee)
+        print "Amount to be sent=%.2f (more exactly=%.3f)" % (amount_to_be_sent, amount_to_be_sent)
+        print "Using configured fee=%.2f%%" % (percentage_fee)
