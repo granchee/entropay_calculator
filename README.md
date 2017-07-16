@@ -1,0 +1,1 @@
+# entropay_calculator
